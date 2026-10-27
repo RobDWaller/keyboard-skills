@@ -37,6 +37,10 @@ fetch("assets/data/test.json")
       if (event.key.toLowerCase() === expected.toLowerCase()) {
         letters[nextIndex].classList.add("word__letter--typed");
         nextIndex += 1;
+
+        if (nextIndex === first.word.length) {
+          image.classList.remove("word__image--hidden");
+        }
       }
     });
   })
