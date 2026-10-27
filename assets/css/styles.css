@@ -1,0 +1,8 @@
+.word__letter {
+  display: inline-block;
+  transition: color 0.15s ease;
+}
+
+.word__letter--typed {
+  color: #16a34a;
+}
