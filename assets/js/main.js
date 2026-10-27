@@ -19,6 +19,7 @@ fetch("assets/data/test.json")
     const image = document.createElement("img");
     image.src = first.image;
     image.alt = first.word;
+    image.className = "word__image word__image--hidden";
     app.append(word, image);
 
     let nextIndex = 0;
