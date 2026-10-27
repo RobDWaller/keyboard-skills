@@ -6,3 +6,13 @@
 .word__letter--typed {
   color: #16a34a;
 }
+
+.word__image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.word__image--hidden {
+  display: none;
+}
