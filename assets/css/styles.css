@@ -7,6 +7,12 @@
   color: #16a34a;
 }
 
+.word__image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
 .word__image {
   display: block;
   max-width: 100%;
@@ -17,10 +23,39 @@
   display: none;
 }
 
+.word__message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.word__message--hidden {
+  display: none;
+}
+
 .next-link {
   display: inline-block;
   margin: 0 0 0.5rem 0;
   color: #2563eb;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.restart-button {
+  display: inline-block;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #2563eb;
+  font: inherit;
   text-decoration: underline;
   cursor: pointer;
 }
