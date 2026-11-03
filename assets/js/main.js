@@ -52,6 +52,16 @@ function renderWord(index) {
   app.append(wordElement, imageContainerElement);
 }
 
+function restart() {
+  if (messageTimer !== null) {
+    window.clearTimeout(messageTimer);
+    messageTimer = null;
+  }
+
+  currentIndex = 0;
+  renderWord(currentIndex);
+}
+
 function showCompletion() {
   const message = document.createElement("p");
   message.className = "word__message";
@@ -63,6 +73,7 @@ function showCompletion() {
   restartButton.type = "button";
   restartButton.className = "restart-button";
   restartButton.textContent = "restart";
+  restartButton.addEventListener("click", restart);
   app.insertBefore(restartButton, imageContainerElement);
 
   messageTimer = window.setTimeout(() => {
