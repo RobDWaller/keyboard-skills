@@ -6,6 +6,7 @@ let letters = [];
 let nextIndex = 0;
 let currentWord = null;
 let wordElement = null;
+let imageContainerElement = null;
 let imageElement = null;
 let nextLinkElement = null;
 
@@ -16,6 +17,7 @@ function renderWord(index) {
   letters = [];
   nextIndex = 0;
   nextLinkElement = null;
+  imageContainerElement = null;
 
   currentWord = words[index];
   if (!currentWord) {
@@ -39,7 +41,11 @@ function renderWord(index) {
   imageElement.alt = currentWord.word;
   imageElement.className = "word__image word__image--hidden";
 
-  app.append(wordElement, imageElement);
+  imageContainerElement = document.createElement("div");
+  imageContainerElement.className = "word__image-container";
+  imageContainerElement.append(imageElement);
+
+  app.append(wordElement, imageContainerElement);
 }
 
 document.addEventListener("keydown", (event) => {
@@ -77,7 +83,7 @@ document.addEventListener("keydown", (event) => {
           renderWord(currentIndex);
         });
         // Insert just above the image
-        app.insertBefore(nextLinkElement, imageElement);
+        app.insertBefore(nextLinkElement, imageContainerElement);
       }
     }
   }
