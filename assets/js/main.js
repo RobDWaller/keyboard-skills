@@ -9,6 +9,10 @@ let wordElement = null;
 let imageContainerElement = null;
 let imageElement = null;
 let nextLinkElement = null;
+let messageTimer = null;
+
+const COMPLETION_MESSAGE = "Well done!";
+const COMPLETION_MESSAGE_DURATION = 3000;
 
 function renderWord(index) {
   // Clear previous elements
@@ -48,6 +52,25 @@ function renderWord(index) {
   app.append(wordElement, imageContainerElement);
 }
 
+function showCompletion() {
+  const message = document.createElement("p");
+  message.className = "word__message";
+  message.setAttribute("role", "status");
+  message.textContent = COMPLETION_MESSAGE;
+  imageContainerElement.append(message);
+
+  const restartButton = document.createElement("button");
+  restartButton.type = "button";
+  restartButton.className = "restart-button";
+  restartButton.textContent = "restart";
+  app.insertBefore(restartButton, imageContainerElement);
+
+  messageTimer = window.setTimeout(() => {
+    message.remove();
+    messageTimer = null;
+  }, COMPLETION_MESSAGE_DURATION);
+}
+
 document.addEventListener("keydown", (event) => {
   if (event.key.length !== 1) {
     return;
@@ -71,6 +94,13 @@ document.addEventListener("keydown", (event) => {
       if (imageElement) {
         imageElement.classList.remove("word__image--hidden");
       }
+
+      // The last word ends the sequence with the completion state
+      if (currentIndex === words.length - 1) {
+        showCompletion();
+        return;
+      }
+
       // Show next link above image
       if (!nextLinkElement) {
         nextLinkElement = document.createElement("a");
@@ -79,7 +109,7 @@ document.addEventListener("keydown", (event) => {
         nextLinkElement.href = "#";
         nextLinkElement.addEventListener("click", (e) => {
           e.preventDefault();
-          currentIndex = (currentIndex + 1) % words.length;
+          currentIndex = currentIndex + 1;
           renderWord(currentIndex);
         });
         // Insert just above the image
