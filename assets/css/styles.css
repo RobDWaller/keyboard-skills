@@ -31,6 +31,18 @@
   height: auto;
 }
 
+@media (max-width: 767px) {
+  .word__image {
+    max-height: 600px;
+  }
+}
+
+@media (min-width: 768px) {
+  .word__image {
+    max-width: 600px;
+  }
+}
+
 .word__image--hidden {
   display: none;
 }
