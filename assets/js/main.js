@@ -113,7 +113,9 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (event.key.toLowerCase() === expected.toLowerCase()) {
-    letters[nextIndex].classList.add("word__letter--typed");
+    const { lower, upper } = letterPairs[nextIndex];
+    lower.classList.add("word__letter--typed");
+    upper.classList.add("word__letter--typed");
     nextIndex += 1;
 
     if (nextIndex === currentWord.word.length) {
