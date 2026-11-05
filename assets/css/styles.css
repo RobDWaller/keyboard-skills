@@ -1,3 +1,11 @@
+.word__line {
+  display: block;
+}
+
+.word__line + .word__line {
+  margin-top: 0.5rem;
+}
+
 .word__letter {
   display: inline-block;
   transition: color 0.15s ease;
