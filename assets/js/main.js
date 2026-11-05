@@ -2,7 +2,7 @@ const app = document.getElementById("app");
 
 let words = [];
 let currentIndex = 0;
-let letters = [];
+let letterPairs = [];
 let nextIndex = 0;
 let currentWord = null;
 let wordElement = null;
@@ -18,7 +18,7 @@ function renderWord(index) {
   // Clear previous elements
   app.innerHTML = "";
 
-  letters = [];
+  letterPairs = [];
   nextIndex = 0;
   nextLinkElement = null;
   imageContainerElement = null;
@@ -31,14 +31,30 @@ function renderWord(index) {
   wordElement = document.createElement("h1");
   wordElement.className = "word";
 
-  letters = currentWord.word.split("").map((character, letterIndex) => {
-    const letter = document.createElement("span");
-    letter.className = "word__letter";
-    letter.dataset.index = letterIndex;
-    letter.textContent = character;
-    wordElement.append(letter);
-    return letter;
+  const lowerLine = document.createElement("span");
+  lowerLine.className = "word__line word__line--lowercase";
+
+  const upperLine = document.createElement("span");
+  upperLine.className = "word__line word__line--uppercase";
+  upperLine.setAttribute("aria-hidden", "true");
+
+  letterPairs = currentWord.word.split("").map((character, letterIndex) => {
+    const lowerLetter = document.createElement("span");
+    lowerLetter.className = "word__letter";
+    lowerLetter.dataset.index = letterIndex;
+    lowerLetter.textContent = character.toLowerCase();
+    lowerLine.append(lowerLetter);
+
+    const upperLetter = document.createElement("span");
+    upperLetter.className = "word__letter";
+    upperLetter.dataset.index = letterIndex;
+    upperLetter.textContent = character.toUpperCase();
+    upperLine.append(upperLetter);
+
+    return { lower: lowerLetter, upper: upperLetter };
   });
+
+  wordElement.append(lowerLine, upperLine);
 
   imageElement = document.createElement("img");
   imageElement.src = currentWord.image;
