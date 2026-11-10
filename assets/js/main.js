@@ -92,10 +92,10 @@ function showCompletion() {
 
   const restartButton = document.createElement("button");
   restartButton.type = "button";
-  restartButton.className = "restart-button";
+  restartButton.className = "word__button";
   restartButton.textContent = "restart";
   restartButton.addEventListener("click", restart);
-  app.insertBefore(restartButton, imageContainerElement);
+  actionsElement.append(restartButton);
 
   messageTimer = window.setTimeout(() => {
     message.remove();
