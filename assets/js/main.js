@@ -9,7 +9,7 @@ let wordElement = null;
 let imageContainerElement = null;
 let imageElement = null;
 let actionsElement = null;
-let nextLinkElement = null;
+let nextButtonElement = null;
 let messageTimer = null;
 
 const COMPLETION_MESSAGE = "Well done!";
@@ -22,7 +22,7 @@ function renderWord(index) {
   letterPairs = [];
   nextIndex = 0;
   actionsElement = null;
-  nextLinkElement = null;
+  nextButtonElement = null;
   imageContainerElement = null;
 
   currentWord = words[index];
@@ -135,19 +135,17 @@ document.addEventListener("keydown", (event) => {
         return;
       }
 
-      // Show next link above image
-      if (!nextLinkElement) {
-        nextLinkElement = document.createElement("a");
-        nextLinkElement.className = "next-link";
-        nextLinkElement.textContent = "next";
-        nextLinkElement.href = "#";
-        nextLinkElement.addEventListener("click", (e) => {
-          e.preventDefault();
+      // Show next button above image
+      if (!nextButtonElement) {
+        nextButtonElement = document.createElement("button");
+        nextButtonElement.type = "button";
+        nextButtonElement.className = "word__button";
+        nextButtonElement.textContent = "next";
+        nextButtonElement.addEventListener("click", () => {
           currentIndex = currentIndex + 1;
           renderWord(currentIndex);
         });
-        // Insert just above the image
-        app.insertBefore(nextLinkElement, imageContainerElement);
+        actionsElement.append(nextButtonElement);
       }
     }
   }
