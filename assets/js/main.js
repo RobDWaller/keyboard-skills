@@ -1,6 +1,7 @@
 const app = document.getElementById("app");
 
 let words = [];
+let sets = [];
 let currentIndex = 0;
 let letterPairs = [];
 let nextIndex = 0;
@@ -103,6 +104,26 @@ function showCompletion() {
   }, COMPLETION_MESSAGE_DURATION);
 }
 
+function renderHome() {
+  // Clear previous elements
+  app.innerHTML = "";
+
+  currentWord = null;
+
+  const setsElement = document.createElement("div");
+  setsElement.className = "home__sets";
+
+  for (const set of sets) {
+    const setButton = document.createElement("button");
+    setButton.type = "button";
+    setButton.className = "word__button";
+    setButton.textContent = set.title;
+    setsElement.append(setButton);
+  }
+
+  app.append(setsElement);
+}
+
 document.addEventListener("keydown", (event) => {
   if (event.key.length !== 1) {
     return;
@@ -151,12 +172,11 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-fetch("assets/data/test.json")
+fetch("assets/data/config.json")
   .then((response) => response.json())
-  .then((data) => {
-    words = data;
-    currentIndex = 0;
-    renderWord(currentIndex);
+  .then((config) => {
+    sets = config;
+    renderHome();
   })
   .catch((error) => {
     console.error("Failed to load data:", error);
