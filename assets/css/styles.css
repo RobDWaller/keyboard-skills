@@ -64,22 +64,33 @@
   display: none;
 }
 
-.next-link {
-  display: inline-block;
-  margin: 0 0 0.5rem 0;
-  color: #2563eb;
-  text-decoration: underline;
+.word__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+}
+
+.word__actions:empty {
+  display: none;
+}
+
+.word__button {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #2563eb;
+  border-radius: 0.375rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  font: inherit;
   cursor: pointer;
 }
 
-.restart-button {
-  display: inline-block;
-  margin: 0 0 0.5rem 0;
-  padding: 0;
-  border: none;
-  background: none;
-  color: #2563eb;
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
+.word__button:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.word__button:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
 }
