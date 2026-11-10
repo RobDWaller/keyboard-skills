@@ -8,6 +8,7 @@ let currentWord = null;
 let wordElement = null;
 let imageContainerElement = null;
 let imageElement = null;
+let actionsElement = null;
 let nextLinkElement = null;
 let messageTimer = null;
 
@@ -20,6 +21,7 @@ function renderWord(index) {
 
   letterPairs = [];
   nextIndex = 0;
+  actionsElement = null;
   nextLinkElement = null;
   imageContainerElement = null;
 
@@ -65,7 +67,10 @@ function renderWord(index) {
   imageContainerElement.className = "word__image-container";
   imageContainerElement.append(imageElement);
 
-  app.append(wordElement, imageContainerElement);
+  actionsElement = document.createElement("div");
+  actionsElement.className = "word__actions";
+
+  app.append(wordElement, actionsElement, imageContainerElement);
 }
 
 function restart() {
