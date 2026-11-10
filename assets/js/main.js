@@ -118,6 +118,18 @@ function renderHome() {
     setButton.type = "button";
     setButton.className = "word__button";
     setButton.textContent = set.title;
+    setButton.addEventListener("click", () => {
+      fetch(set.file)
+        .then((response) => response.json())
+        .then((data) => {
+          words = data;
+          currentIndex = 0;
+          renderWord(currentIndex);
+        })
+        .catch((error) => {
+          console.error("Failed to load data:", error);
+        });
+    });
     setsElement.append(setButton);
   }
 
