@@ -71,6 +71,20 @@ function renderWord(index) {
   actionsElement = document.createElement("div");
   actionsElement.className = "word__actions";
 
+  const homeButtonElement = document.createElement("button");
+  homeButtonElement.type = "button";
+  homeButtonElement.className = "word__button";
+  homeButtonElement.textContent = "home";
+  homeButtonElement.addEventListener("click", () => {
+    if (messageTimer !== null) {
+      window.clearTimeout(messageTimer);
+      messageTimer = null;
+    }
+
+    renderHome();
+  });
+  actionsElement.append(homeButtonElement);
+
   app.append(wordElement, actionsElement, imageContainerElement);
 }
 
