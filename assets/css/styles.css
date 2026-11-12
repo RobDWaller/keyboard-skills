@@ -59,6 +59,13 @@ body {
   display: none;
 }
 
+.word__image-container:has(.word__image--hidden) {
+  width: min(100%, 600px);
+  aspect-ratio: 4 / 3;
+  border-radius: 0.5rem;
+  background-color: #d1d5db;
+}
+
 .word__message {
   position: absolute;
   top: 50%;
