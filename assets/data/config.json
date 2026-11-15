@@ -1,4 +1,6 @@
 [
   { "title": "First Words", "file": "assets/data/test.json" },
-  { "title": "Animals", "file": "assets/data/animals.json" }
+  { "title": "Animals", "file": "assets/data/animals.json" },
+  { "title": "Pokémon Beginners", "file": "assets/data/pokemon.json" },
+  { "title": "Pokémon Advanced", "file": "assets/data/pokemon-advanced.json" }
 ]
