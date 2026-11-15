@@ -6,6 +6,18 @@ body {
   text-align: center;
 }
 
+.site-header {
+  text-align: center;
+}
+
+.site-logo {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
 .home__sets {
   display: flex;
   flex-direction: column;
